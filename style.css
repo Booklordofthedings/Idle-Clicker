@@ -17,13 +17,18 @@ body {
     grid-template-rows: auto 1fr auto;
 
     font-family: roboto;
+    background-color: #aab1b3;
+
+    border:1px solid #FFFFFFFF;
 }
 
 game {
     grid-row-start: 2;
     grid-row-end: 2;
 
-    background-color: #c41717;
+    background-color: #5d9fb1;
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
 }
 
 points {
@@ -41,5 +46,6 @@ buttons {
 }
 
 h2 {
+    margin: 2px;
     font-family: roboto-reg; 
 }
