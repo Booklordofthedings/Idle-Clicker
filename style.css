@@ -49,3 +49,32 @@ h2 {
     margin: 2px;
     font-family: roboto-reg; 
 }
+
+shop{
+    grid-row-start: 2;
+    grid-row-end: 2;
+    background-color: red;
+}
+
+.items{
+    border: 2px solid black;
+    margin: 20px;
+    height: 50px;
+    padding: 10px;
+}
+beschreibung {
+    text-align:right;
+}
+
+.itemicon{
+    float: left;
+    margin-left:5px;
+}
+.buyButton{
+    float:right;
+    height: 100%;
+    margin-left: 5px;
+}
+
+
+
