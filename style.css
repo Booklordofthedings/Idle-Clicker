@@ -1,4 +1,45 @@
+@font-face {
+    font-family: roboto;
+    src: url("fonts/Roboto-Light.ttf");
+}
+
+@font-face {
+    font-family: roboto-reg;
+    src: url("fonts/Roboto-Regular.ttf");
+}
+
 body {
     width: 700px;
     height: 500px;
+    margin:0px;
+
+    display:grid;
+    grid-template-rows: auto 1fr auto;
+
+    font-family: roboto;
+}
+
+game {
+    grid-row-start: 2;
+    grid-row-end: 2;
+
+    background-color: #c41717;
+}
+
+points {
+    grid-row-start: 1;
+    grid-row-end: 1;
+
+
+    text-align: center;
+}
+
+buttons {
+    grid-row-start: 3;
+    grid-row-end: 3;
+
+}
+
+h2 {
+    font-family: roboto-reg; 
 }
