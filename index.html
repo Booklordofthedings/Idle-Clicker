@@ -1,18 +1,29 @@
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
+        <title>Idle Game</title> <!--Not necessary, however linters complain-->
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <points>
-                <h2>10000 - 100/s</h2>
-        </points>
 
-        <game style="display: none">
+        <!--Point header-->
+        <div id="Header">
+            10000 - 100/s
+        </div>
+
+
+
+        <!--Gamescreen-->
+        <div id="Game">
             Game content goes dsadasdasd
             <img src="assets/shopping-cart.svg" style="height: 16px; width: 16px; position: absolute; ;">
-        </game>
-        <shop>
+        </div>
+
+
+
+        <!--Shop-->
+        <div id="Shop" style="display: none">
+
             <div class="items">
                 <a>
                     <img src="assets/game icons/PNG/Colored/genericItem_color_003.png" class="itemicon">
@@ -22,11 +33,30 @@
                 <h3 class="content">beschriebung</h3>
                 
             </div>
-        </shop>
+        </div>
 
-        <buttons>
-            <h2 style="float: left;">Shop</h2>
-            <h2>Options</h2>
-        </buttons>
+
+
+        <!--Taskbar-->
+        <div id="Taskbar">
+            <table>
+                <tr>
+                    <td>
+                        <img src="assets/monitor.svg" style="height: 24px; width: 24px;" id="GameButton">
+                    </td>
+                    <td>
+                        <img src="assets/shopping-cart.svg" style="height: 24px; width: 24px;" id="ShopButton">
+                    </td>
+                    <td>
+                        <img src="assets/settings.svg" style="height: 24px; width: 24px;">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!--Javascript is a clown language-->
+        <script src="script.js"></script>
+
+
     </body>
 </html>

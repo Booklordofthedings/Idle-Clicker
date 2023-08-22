@@ -2,7 +2,6 @@
     font-family: roboto;
     src: url("fonts/Roboto-Light.ttf");
 }
-
 @font-face {
     font-family: roboto-reg;
     src: url("fonts/Roboto-Regular.ttf");
@@ -22,7 +21,7 @@ body {
     border:1px solid #FFFFFFFF;
 }
 
-game {
+#Game {
     grid-row-start: 2;
     grid-row-end: 2;
 
@@ -31,26 +30,28 @@ game {
     border-bottom: 1px solid #000000;
 }
 
-points {
+#Header {
     grid-row-start: 1;
     grid-row-end: 1;
 
 
     text-align: center;
-}
-
-buttons {
-    grid-row-start: 3;
-    grid-row-end: 3;
-
-}
-
-h2 {
     margin: 2px;
     font-family: roboto-reg; 
 }
 
-shop{
+#Taskbar {
+    grid-row-start: 3;
+    grid-row-end: 3;
+
+    padding: 3px;
+}
+
+h2 {
+    
+}
+
+#Shop{
     grid-row-start: 2;
     grid-row-end: 2;
     background-color: red;

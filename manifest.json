@@ -4,6 +4,7 @@
     "description": "Idle-Clicker game for the browser",
     "version": "0.1",
     "action": {
-      "default_popup": "index.html"
+      "default_popup": "index.html",
+      "default_icon": "icon.png"
     }
   }
