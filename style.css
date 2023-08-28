@@ -59,18 +59,25 @@ body {
 
 .item {
     border: 2px solid #000000;
-    margin: 20px;
+    
     padding: 10px;
+    
 }
 
 .itemIcon {
     float: left;
     margin-left:5px;
 }
-.buyButton {
-    float:right;
-    height: 50px;
-    margin-left: 5px;
+
+buttonbuy {
+    display:block;
+    margin-left: auto;
+    background-color:rgb(36, 142, 36);
+    border: 2px solid green;
+    box-shadow: 3px 3px 10px;
+    width:30%;
+    height: 30%;
+
 }
 
 .taskbarButtons {
