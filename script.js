@@ -30,13 +30,15 @@ async function SpawnEnemy() {
     document.getElementById("Game").appendChild(makeEnemy());
 }
 
+//The game loop
+async function runGame()
+{
+    //Retrieve data from storage
+}
+
 
 document.getElementById("GameButton").addEventListener("click", () => {TryEnableScreen("Game")});
 document.getElementById("ShopButton").addEventListener("click", () => {TryEnableScreen("Shop")});
 document.getElementById("SettingsButton").addEventListener("click", () => {TryEnableScreen("Settings")});
 document.getElementById("InfoButton").addEventListener("click", () => {TryEnableScreen("Info")});
-
-for(var i = 0; i < 10; i++) {
-    SpawnEnemy();
-}
 
