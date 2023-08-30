@@ -7,6 +7,11 @@ const Edges = {
     width: Game.offsetWidth - 40,
     height: Game.offsetHeight - 40
 };
+const Buyables = [
+    "Coffee",
+    "Debugging_Duck"
+];
+
 
 
 var Difficulty = 0;
@@ -21,15 +26,10 @@ function TryEnableScreen(toEnable) {
     document.getElementById(toEnable).style.display = "block";
 }
 
-function randomIntFromInterval(min, max) {
+//Returns a random integer between min and max
+function random(min, max) {
     var num = Math.floor(Math.random() * (max - min + 1) + min);
     return num;
-}
-
-//spawn a new enemy
-async function SpawnEnemy() {
-    await new Promise(r => setTimeout(r, 2000));
-    document.getElementById("Game").appendChild(makeEnemy());
 }
 
 //Creates an enemy object
@@ -39,9 +39,9 @@ function makeEnemy(difficulty) {
 
     var enemy = {
         health: 1 + difficulty,
-        x: randomIntFromInterval(Edges.x, Edges.width),
-        y: randomIntFromInterval(Edges.y, Edges.height),
-        r: randomIntFromInterval(0, 360),
+        x: random(Edges.x, Edges.width),
+        y: random(Edges.y, Edges.height),
+        r: random(0, 360),
         draw: function(parent) {
             var img = new Image(32,32);
             img.src = Sprite;
@@ -78,8 +78,6 @@ async function runGame()
     //Retrieve data from storage
     //Set data if available, otherwise create new data
     //Retrive strenght data
-    //Spawn new enemies
-    //display new score
     //save data every x seconds
 
     //Loop and create a new enemy every x seconds
