@@ -2,8 +2,8 @@
 let volume = document.getElementById("myNumber").value/100;
 
 // Audioobjekte
-var bugHitAudio = new Audio("bugHit.mp3");
-var itemBoughtAudio = new Audio("itemBought.mp3");
+var bugHitAudio = new Audio("../assets/audio/bugHit.mp3");
+var itemBoughtAudio = new Audio("../assets/audio/itemBought.mp3");
 
 //Volumeeinstellung durch Regler
 document.getElementById("myNumber").oninput = function(){
