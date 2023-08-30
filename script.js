@@ -1,6 +1,7 @@
 const Sprites = ["assets/bug.png"]
 const Game = document.getElementById("Game");
 var Difficulty = 0;
+var Score = 0;
 
 //Disables every screen except the one passed in
 function TryEnableScreen(toEnable) {
@@ -34,11 +35,17 @@ function makeEnemy(difficulty, sprites) {
         r: randomIntFromInterval(0, 360),
         draw: function(parent) {
             var img = new Image(32,32);
-            img.src = sprites[this.health > sprites.lenght ? sprites.lenght : this.health];
+            img.src = "assets/bug.png";
             img.style.position = "absolute";
             img.style.top = `${this.y}px`;
             img.style.left = `${this.x}px`;
             img.style.transform = `rotate(${this.r}deg)`;
+            img.addEventListener("click", async () => {
+                Score++;
+                document.getElementById("Points").innerHTML = Score;
+                await chrome.storage.session.set({ Score: Score});
+                img.remove();
+            });
             parent.appendChild(img);
         }
     };
@@ -49,6 +56,16 @@ function makeEnemy(difficulty, sprites) {
 //The game loop
 async function runGame(sprites)
 {
+    var enemies = [];
+    var Game = document.getElementById("Game");
+
+    Score = (await chrome.storage.session.get(["Score"]))["Score"];
+    console.log(Score);
+    if(Score === undefined || Score === null || isNaN(Score))
+        Score = 0;
+    document.getElementById("Points").innerHTML = Score;
+
+
     //Retrieve data from storage
     //Set data if available, otherwise create new data
     //Retrive strenght data
@@ -61,6 +78,8 @@ async function runGame(sprites)
     while(run) {
         await new Promise(r => setTimeout(r, 2000)); //Delay TODO: Retrive delay from store
         var e = makeEnemy(1,Sprites);
+        enemies.push(e);
+        e.draw(Game);
     }
 
 }
@@ -70,4 +89,4 @@ document.getElementById("GameButton").addEventListener("click", () => {TryEnable
 document.getElementById("ShopButton").addEventListener("click", () => {TryEnableScreen("Shop")});
 document.getElementById("SettingsButton").addEventListener("click", () => {TryEnableScreen("Settings")});
 document.getElementById("InfoButton").addEventListener("click", () => {TryEnableScreen("Info")});
-
+runGame(Sprites)
