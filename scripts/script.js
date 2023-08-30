@@ -50,6 +50,7 @@ function makeEnemy(difficulty) {
             img.style.left = `${this.x}px`;
             img.style.transform = `rotate(${this.r}deg)`;
             img.addEventListener("click", async () => {
+                audioCopyPlayBugHit();
                 Score++;
                 document.getElementById("Points").innerHTML = Score;
                 await chrome.storage.session.set({ Score: Score});
