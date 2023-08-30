@@ -1,3 +1,17 @@
+//Global constants
+const Sprite = "assets/bug.png";
+const Game = document.getElementById("Game");
+const Edges = {
+    x: 8,
+    y: 8,
+    width: Game.offsetWidth - 40,
+    height: Game.offsetHeight - 40
+};
+
+
+var Difficulty = 0;
+var Score = 0;
+
 //Disables every screen except the one passed in
 function TryEnableScreen(toEnable) {
     document.getElementById("Game").style.display = "none";
@@ -10,18 +24,6 @@ function TryEnableScreen(toEnable) {
 function randomIntFromInterval(min, max) {
     var num = Math.floor(Math.random() * (max - min + 1) + min);
     return num;
-  }
-
-//Create a enemy html object with random settings
-function makeEnemy() {
-    var game = document.getElementById("Game")
-
-    var enemy = new Image(32,32);
-    enemy.src = "assets/bug.png";
-    enemy.style.position = "absolute";
-    enemy.style.top = `${randomIntFromInterval(8, game.offsetHeight - 40)}px`;
-    enemy.style.left = `${randomIntFromInterval(8, game.offsetWidth - 40)}px`;
-    return enemy;
 }
 
 //spawn a new enemy
@@ -30,13 +32,70 @@ async function SpawnEnemy() {
     document.getElementById("Game").appendChild(makeEnemy());
 }
 
+//Creates an enemy object
+function makeEnemy(difficulty) {
+    if(difficulty === null  || difficulty === undefined)
+        difficulty = 1; //So we dont need to error check
+
+    var enemy = {
+        health: 1 + difficulty,
+        x: randomIntFromInterval(Edges.x, Edges.width),
+        y: randomIntFromInterval(Edges.y, Edges.height),
+        r: randomIntFromInterval(0, 360),
+        draw: function(parent) {
+            var img = new Image(32,32);
+            img.src = Sprite;
+            img.style.position = "absolute";
+            img.style.top = `${this.y}px`;
+            img.style.left = `${this.x}px`;
+            img.style.transform = `rotate(${this.r}deg)`;
+            img.addEventListener("click", async () => {
+                Score++;
+                document.getElementById("Points").innerHTML = Score;
+                await chrome.storage.session.set({ Score: Score});
+                img.remove();
+            });
+            parent.appendChild(img);
+        }
+    };
+
+    return enemy;
+}
+
+//The game loop
+async function runGame()
+{
+    var enemies = [];
+    var Game = document.getElementById("Game");
+
+    Score = (await chrome.storage.session.get(["Score"]))["Score"];
+    console.log(Score);
+    if(Score === undefined || Score === null || isNaN(Score))
+        Score = 0;
+    document.getElementById("Points").innerHTML = Score;
+
+
+    //Retrieve data from storage
+    //Set data if available, otherwise create new data
+    //Retrive strenght data
+    //Spawn new enemies
+    //display new score
+    //save data every x seconds
+
+    //Loop and create a new enemy every x seconds
+    const run = true;
+    while(run) {
+        await new Promise(r => setTimeout(r, 2000)); //Delay TODO: Retrive delay from store
+        var e = makeEnemy(1);
+        enemies.push(e);
+        e.draw(Game);
+    }
+
+}
+
 
 document.getElementById("GameButton").addEventListener("click", () => {TryEnableScreen("Game")});
 document.getElementById("ShopButton").addEventListener("click", () => {TryEnableScreen("Shop")});
 document.getElementById("SettingsButton").addEventListener("click", () => {TryEnableScreen("Settings")});
 document.getElementById("InfoButton").addEventListener("click", () => {TryEnableScreen("Info")});
-
-for(var i = 0; i < 10; i++) {
-    SpawnEnemy();
-}
-
+runGame()
