@@ -35,17 +35,20 @@
         </div>
 
         <div id="Settings" style="display: none">
-            <div id="sound">
-                <h2 style="text-align:center">Sound</h2>
-                <label class="toggle">
+            <div id="theme" style="margin-left: auto;margin-right: auto; width: 120px; margin-bottom:30px">
+                <h2 style="text-align:center">Theme</h2>
+                <img src="assets\sun.svg" style="width: 30px;">
+                <label class="switch">
                     <input type="checkbox">
-                    <span class="slider"></span>
-                  
-                    <!-- label element 👇 -->
-                    <span class="labels" data-on="ON" data-off="OFF"></span>
+                    <span class="slider round"></span>
                   </label>
+                  <label><img src="assets\moon.svg" style="width: 30px;float: right;"></label>
             </div>
-          
+            <div id="sound" style="margin-left: auto;margin-right: auto; width: 200px; margin-bottom:30px;">
+                <h2 style="text-align:center">Sound</h2>
+                <input type="range" min="0" max="100" value="50" id="myNumber" style="width: 200px;">
+            </div>
+        
         </div>
 
         <div id="Info" style="display: none; text-align: center;">
