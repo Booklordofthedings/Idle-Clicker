@@ -1,5 +1,14 @@
-const Sprites = ["assets/bug.png"]
+//Global constants
+const Sprite = "assets/bug.png";
 const Game = document.getElementById("Game");
+const Edges = {
+    x: 8,
+    y: 8,
+    width: Game.offsetWidth - 40,
+    height: Game.offsetHeight - 40
+};
+
+
 var Difficulty = 0;
 var Score = 0;
 
@@ -24,18 +33,18 @@ async function SpawnEnemy() {
 }
 
 //Creates an enemy object
-function makeEnemy(difficulty, sprites) {
+function makeEnemy(difficulty) {
     if(difficulty === null  || difficulty === undefined)
         difficulty = 1; //So we dont need to error check
 
     var enemy = {
         health: 1 + difficulty,
-        x: randomIntFromInterval(8, Game.offsetWidth - 40),
-        y: randomIntFromInterval(8, Game.offsetHeight - 40),
+        x: randomIntFromInterval(Edges.x, Edges.width),
+        y: randomIntFromInterval(Edges.y, Edges.height),
         r: randomIntFromInterval(0, 360),
         draw: function(parent) {
             var img = new Image(32,32);
-            img.src = "assets/bug.png";
+            img.src = Sprite;
             img.style.position = "absolute";
             img.style.top = `${this.y}px`;
             img.style.left = `${this.x}px`;
@@ -54,7 +63,7 @@ function makeEnemy(difficulty, sprites) {
 }
 
 //The game loop
-async function runGame(sprites)
+async function runGame()
 {
     var enemies = [];
     var Game = document.getElementById("Game");
@@ -77,7 +86,7 @@ async function runGame(sprites)
     const run = true;
     while(run) {
         await new Promise(r => setTimeout(r, 2000)); //Delay TODO: Retrive delay from store
-        var e = makeEnemy(1,Sprites);
+        var e = makeEnemy(1);
         enemies.push(e);
         e.draw(Game);
     }
@@ -89,4 +98,4 @@ document.getElementById("GameButton").addEventListener("click", () => {TryEnable
 document.getElementById("ShopButton").addEventListener("click", () => {TryEnableScreen("Shop")});
 document.getElementById("SettingsButton").addEventListener("click", () => {TryEnableScreen("Settings")});
 document.getElementById("InfoButton").addEventListener("click", () => {TryEnableScreen("Info")});
-runGame(Sprites)
+runGame()
