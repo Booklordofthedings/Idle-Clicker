@@ -11,13 +11,6 @@
   --themeGrayBackgound:#aab1b3;
   --themeBlueBackground:#5d9fb1;
   --themeTextColor:black;
-  --imageGrayScale: none;
-  /*
-  --themeGrayBlackgound:#aab1b3;
-  --themeBlueBackground:#5d9fb1;
-  --moonGrayBackground:#444849;
-  --moonBlueBackground: #3a6470;
-  */
 }
 
 body {
@@ -70,7 +63,7 @@ body {
     background-color:var(--themeBlueBackground);
 }
 
-.shopText{
+.themeText{
   color: var(--themeTextColor);
 }
 
