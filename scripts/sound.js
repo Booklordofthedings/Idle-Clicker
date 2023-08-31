@@ -1,3 +1,14 @@
+//Remember that if you want to play the sound in a content 
+//script (or anywhere else that is not under a chrome://extension URL) 
+//you'll have to declare the audio file in the web_accessible_resources 
+//manifest field:
+
+web_accessible_resources: [
+    "../assets/audio/itemBought.mp3",
+    "../assets/audio/bugHit.mp3"
+]
+
+
 // Variable für Volume
 let volume = document.getElementById("myNumber").value/100;
 
@@ -14,12 +25,14 @@ document.getElementById("myNumber").oninput = function(){
 function audioCopyPlayBugHit(){
     var copy = bugHitAudio.cloneNode();
     copy.volume = volume;
-    copy.play;
+    copy.play();
 }
+
+
 
 function audioCopyPlayItemBought(){
     var copy = bugHitAudio.cloneNode();
     copy.volume = volume;
-    copy.play;
+    copy.play();
 }
 

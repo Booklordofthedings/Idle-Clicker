@@ -7,6 +7,19 @@
     src: url("../assets/fonts/Roboto-Regular.ttf");
 }
 
+:root{
+  --themeGrayBackgound:#aab1b3;
+  --themeBlueBackground:#5d9fb1;
+  --themeTextColor:black;
+  --imageGrayScale: none;
+  /*
+  --themeGrayBlackgound:#aab1b3;
+  --themeBlueBackground:#5d9fb1;
+  --moonGrayBackground:#444849;
+  --moonBlueBackground: #3a6470;
+  */
+}
+
 body {
     width: 700px;
     height: 500px;
@@ -16,16 +29,16 @@ body {
     grid-template-rows: auto 1fr auto;
 
     font-family: roboto;
-    background-color: #aab1b3;
+    background-color:var(--themeGrayBackgound);
 
-    border:1px solid #FFFFFFFF;
+    border:1px solid var(--themeTextColor);
 }
 
 #Game {
     grid-row-start: 2;
     grid-row-end: 2;
 
-    background-color: #5d9fb1;
+    background-color:var(--themeBlueBackground);
     
     position: relative;
 }
@@ -39,7 +52,8 @@ body {
 
     text-align: center;
     padding: 2px;
-    font-family: roboto-reg; 
+    font-family: roboto-reg;
+    color:var(--themeTextColor); 
 }
 
 #Taskbar {
@@ -53,8 +67,11 @@ body {
 #Shop{
     grid-row-start: 2;
     grid-row-end: 2;
+    background-color:var(--themeBlueBackground);
+}
 
-    background-color: #5d9fb1;
+.shopText{
+  color: var(--themeTextColor);
 }
 
 .item {
@@ -84,6 +101,7 @@ buttonbuy {
     height: 24px;
     width: 24px;
     display: inline;
+    stroke:white;
 }
 
 /* The switch - the box around the slider */
@@ -127,11 +145,11 @@ buttonbuy {
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: var(--themeBlueBackground);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px var(--themeBlueBackground);
 }
 
 input:checked + .slider:before {
